@@ -662,9 +662,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clang-format',
-        'gofumpt',
-        'goimports-reviser',
         'golines',
+        'goimports-reviser',
         'autoflake',
         'yapf',
         'prettier',
@@ -673,6 +672,7 @@ require('lazy').setup({
         'markdownlint',
         'vale',
         'codespell',
+        'checkmake',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -727,18 +727,21 @@ require('lazy').setup({
         lua = { 'stylua' },
         c = { 'clang-format' },
         cpp = { 'clang-format' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        html = { 'prettier' },
+        vue = { 'prettier' },
+        markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         python = { 'autoflake', 'yapf' },
-        go = { 'gofumpt', 'goimports-reviser', 'golines' },
+        go = { 'golines', 'goimports-reviser', lsp_format = 'last' },
         sql = { 'sqlfmt', 'sqlfluff' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettier', 'prettierd', stop_after_first = true },
-        vue = { 'prettier', 'prettierd', stop_after_first = true },
-        markdown = { 'prettier', 'prettierd', stop_after_first = true },
       },
       formatters = {
         ['clang-format'] = { prepend_args = { '--fallback-style=google' } },
+        ['goimports-reviser'] = { prepend_args = { '-rm-unused' } },
         golines = { prepend_args = { '--max-len=80' } },
       },
     },
