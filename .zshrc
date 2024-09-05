@@ -95,6 +95,7 @@ plugins=(
   gitignore
   golang
   history-substring-search
+  mongocli
   node
   npm
   nvm
