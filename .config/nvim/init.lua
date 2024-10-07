@@ -608,6 +608,22 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       --
       local servers = {
+        lua_ls = {
+          -- cmd = {...},
+          -- filetypes = { ...},
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        --
+
         clangd = {},
         gopls = {
           settings = {
@@ -623,6 +639,7 @@ require('lazy').setup({
           },
         },
         pyright = {},
+        tailwindcss = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -630,7 +647,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {
+        --
+        eslint = {},
+        ts_ls = {
           init_options = {
             plugins = {
               {
@@ -653,22 +672,6 @@ require('lazy').setup({
           },
         },
         volar = {},
-        --
-
-        lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -685,13 +688,12 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clang-format',
+        'goimports',
         'golines',
         'goimports-reviser',
         'autoflake',
         'yapf',
         'prettier',
-        'sqlfmt',
-        'sqlfluff',
         'markdownlint',
         'vale',
         'codespell',
@@ -703,9 +705,6 @@ require('lazy').setup({
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            if server_name == 'tsserver' then
-              server_name = 'ts_ls'
-            end
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
@@ -760,14 +759,12 @@ require('lazy').setup({
         markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         python = { 'autoflake', 'yapf' },
-        go = { 'golines', 'goimports-reviser', lsp_format = 'last' },
-        sql = { 'sqlfmt', 'sqlfluff' },
+        go = { 'golines', 'goimports-reviser', 'gofumpt', lsp_format = 'last' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
       },
       formatters = {
         ['clang-format'] = { prepend_args = { '--fallback-style=google' } },
-        ['goimports-reviser'] = { prepend_args = { '-rm-unused' } },
         golines = { prepend_args = { '--max-len=80' } },
       },
     },
