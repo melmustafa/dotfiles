@@ -39,7 +39,7 @@ Oh-My-Zsh is a zsh framework that manges themes, plugins, and configuration. It 
 Just run the following:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 ```
 
 ### Oh-My-Zsh Plugins

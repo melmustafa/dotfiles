@@ -100,6 +100,7 @@ plugins=(
   npm
   nvm
   yarn
+  pyenv
   python
   thefuck
   tmux
