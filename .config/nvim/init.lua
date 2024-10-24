@@ -672,6 +672,7 @@ require('lazy').setup({
           },
         },
         volar = {},
+        -- dockerls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -692,10 +693,9 @@ require('lazy').setup({
         'golines',
         'goimports-reviser',
         'autoflake',
+        'isort',
         'yapf',
         'prettier',
-        'markdownlint',
-        'vale',
         'codespell',
         'checkmake',
       })
@@ -753,12 +753,13 @@ require('lazy').setup({
         c = { 'clang-format' },
         cpp = { 'clang-format' },
         javascript = { 'prettier' },
+        json = { 'prettier' },
         typescript = { 'prettier' },
         html = { 'prettier' },
         vue = { 'prettier' },
         markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'autoflake', 'yapf' },
+        python = { 'isort', 'autoflake', 'yapf' },
         go = { 'golines', 'goimports-reviser', 'gofumpt', lsp_format = 'last' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
