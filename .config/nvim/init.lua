@@ -638,7 +638,28 @@ require('lazy').setup({
             },
           },
         },
-        pyright = {},
+        ruff = {
+          trace = 'messages',
+          init_options = {
+            settings = {
+              lineLength = 80,
+              fixAll = true,
+            },
+          },
+        },
+        pyright = {
+          settings = {
+            pyright = {
+              autoImportCompletion = true,
+              disableOrganizeImports = true,
+            },
+            python = {
+              analysis = {
+                ignore = { '*' },
+              },
+            },
+          },
+        },
         tailwindcss = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -692,12 +713,10 @@ require('lazy').setup({
         'goimports',
         'golines',
         'goimports-reviser',
-        'autoflake',
-        'isort',
-        'yapf',
         'prettier',
         'codespell',
         'checkmake',
+        'vale',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -737,11 +756,12 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
-        local lsp_format_opt
+        local lsp_first_filetypes = { go = true, python = true }
+        local lsp_format_opt = 'fallback'
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
-        else
-          lsp_format_opt = 'fallback'
+        elseif lsp_first_filetypes[vim.bo[bufnr].filetype] then
+          lsp_format_opt = 'first'
         end
         return {
           timeout_ms = 500,
@@ -759,8 +779,8 @@ require('lazy').setup({
         vue = { 'prettier' },
         markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'isort', 'autoflake', 'yapf' },
-        go = { 'golines', 'goimports-reviser', 'gofumpt', lsp_format = 'last' },
+        python = {},
+        go = { 'golines', 'goimports-reviser' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
       },

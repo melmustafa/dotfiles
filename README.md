@@ -4,7 +4,7 @@ Here are the configuration for the tooling I use daily. It includes [neovim](htt
 
 ## Zsh
 
-Z-Shell or zsh is a configurable unix shell that provides powerful community-backed plugins.
+Z-Shell or zsh is a configurable UNIX shell that provides powerful community-backed plugins.
 
 ### Zsh Installtion
 
@@ -68,14 +68,14 @@ You will need `git` to install most of Oh-My-Zsh related configuration and plugi
 
 To install git:
 
-- Ubuntu/Debian
-
-  ```bash
-  sudo apt install git
-  ```
-
 - Arch
 
   ```bash
   sudo pacman -Syu git
+  ```
+
+- Ubuntu/Debian
+
+  ```bash
+  sudo apt install git
   ```

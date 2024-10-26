@@ -7,6 +7,8 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         makefile = { 'checkmake' },
+        markdown = { 'vale' },
+        python = { 'ruff' },
         ['*'] = { 'codespell' },
       }
 
