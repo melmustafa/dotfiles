@@ -661,7 +661,7 @@ require('lazy').setup({
           },
         },
         tailwindcss = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -678,7 +678,7 @@ require('lazy').setup({
                 location = require('mason-registry').get_package('vue-language-server'):get_install_path()
                   .. '/node_modules/@vue/language-server'
                   .. '/node_modules/@vue/typescript-plugin',
-                languages = { 'javascript', 'typescript', 'vue' },
+                languages = { 'javascript', 'typescript', 'jsx', 'tsx', 'vue' },
               },
             },
           },
@@ -755,8 +755,8 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        local lsp_first_filetypes = { go = true, python = true }
+        local disable_filetypes = { c = true, cpp = true, python = true }
+        local lsp_first_filetypes = { go = true }
         local lsp_format_opt = 'fallback'
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
