@@ -7,8 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         makefile = { 'checkmake' },
-        markdown = { 'vale' },
+        dockerfile = { 'hadolint' },
         python = { 'ruff' },
+        markdown = { 'vale' },
+        text = { 'vale' },
         ['*'] = { 'codespell' },
       }
 
