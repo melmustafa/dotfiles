@@ -693,7 +693,7 @@ require('lazy').setup({
           },
         },
         volar = {},
-        -- dockerls = {},
+        dockerls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -717,6 +717,7 @@ require('lazy').setup({
         'codespell',
         'checkmake',
         'vale',
+        'hadolint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -743,7 +744,14 @@ require('lazy').setup({
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format({ async = true, lsp_format = 'fallback' }, function(err)
+            if not err then
+              local mode = vim.api.nvim_get_mode().mode
+              if vim.startswith(string.lower(mode), 'visual') then
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+              end
+            end
+          end)
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -757,14 +765,17 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true, python = true }
         local lsp_first_filetypes = { go = true }
+        local lsp_last_filetypes = {}
         local lsp_format_opt = 'fallback'
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
         elseif lsp_first_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'first'
+        elseif lsp_last_filetypes[vim.bo[bufnr].filetype] then
+          lsp_format_opt = 'last'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_format = lsp_format_opt,
         }
       end,
@@ -779,7 +790,7 @@ require('lazy').setup({
         vue = { 'prettier' },
         markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
-        python = {},
+        python = { 'ruff_organize_imports', 'ruff_format' },
         go = { 'golines', 'goimports-reviser' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
@@ -787,6 +798,7 @@ require('lazy').setup({
       formatters = {
         ['clang-format'] = { prepend_args = { '--fallback-style=google' } },
         golines = { prepend_args = { '--max-len=80' } },
+        ruff_format = { append_args = { '--line-length', '80' } },
       },
     },
   },
