@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:/opt/nvim-linux64/bin
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:/opt/nvim-linux-x86_64/bin
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -88,7 +88,6 @@ plugins=(
   colored-man-pages
   colorize
   command-not-found
-  docker
   extract
   fzf
   git
