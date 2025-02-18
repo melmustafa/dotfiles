@@ -775,7 +775,7 @@ require('lazy').setup({
           lsp_format_opt = 'last'
         end
         return {
-          timeout_ms = 1000,
+          timeout_ms = 500,
           lsp_format = lsp_format_opt,
         }
       end,
@@ -800,7 +800,6 @@ require('lazy').setup({
       formatters = {
         ['clang-format'] = { prepend_args = { '--fallback-style=google' } },
         golines = { prepend_args = { '--max-len=80' } },
-        ruff_format = { append_args = { '--line-length', '80' } },
       },
     },
   },
