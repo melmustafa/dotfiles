@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 80
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+lines-between-types = 1
+order-by-type = true
+known-first-party = ['src']
