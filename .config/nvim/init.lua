@@ -700,8 +700,31 @@ require('lazy').setup({
               staticcheck = true,
               completeUnimported = true,
               usePlaceholders = true,
+              semanticTokens = true,
+              codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
               analyses = {
+                nilness = true,
                 unusedparams = true,
+                unusedwrite = true,
+                useany = true,
               },
             },
           },
@@ -729,7 +752,8 @@ require('lazy').setup({
           },
         },
         tailwindcss = {},
-
+        rust_analyzer = {},
+        yamlls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -761,6 +785,8 @@ require('lazy').setup({
         },
         volar = {},
         dockerls = {},
+        hls = {},
+        texlab = {},
       }
 
       -- Ensure the servers and tools above are installed
