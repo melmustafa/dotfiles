@@ -9,7 +9,7 @@ return {
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install --frozen-lockfile',
+    build = 'cd app && COREPACK_ENABLE_AUTO_PIN=0 yarn install --no-lockfile',
     init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
