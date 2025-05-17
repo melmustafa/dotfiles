@@ -11,7 +11,6 @@ return {
         python = { 'ruff' },
         markdown = { 'vale' },
         text = { 'vale' },
-        ['*'] = { 'codespell' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
