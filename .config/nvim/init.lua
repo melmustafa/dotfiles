@@ -813,6 +813,7 @@ require('lazy').setup({
         html = { 'prettier' },
         vue = { 'prettier' },
         markdown = { 'prettier' },
+        yaml = { 'prettier' },
         python = { 'ruff_organize_imports', 'ruff_format' },
         go = { 'golines', 'goimports-reviser' },
       },
