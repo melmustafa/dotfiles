@@ -9,3 +9,5 @@ styles
 /.config/nvim/.git
 
 /.config/nvim/.github
+
+/.config/nvim/.gitignore
