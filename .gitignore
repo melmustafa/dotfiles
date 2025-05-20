@@ -5,3 +5,5 @@ tmux/
 /.powerlevel10k/
 
 styles
+
+/.config/nvim/.git
