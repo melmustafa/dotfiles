@@ -7,3 +7,5 @@ tmux/
 styles
 
 /.config/nvim/.git
+
+/.config/nvim/.github
