@@ -8,7 +8,6 @@ return {
       lint.linters_by_ft = {
         makefile = { 'checkmake' },
         dockerfile = { 'hadolint' },
-        python = { 'ruff' },
         markdown = { 'vale' },
         text = { 'vale' },
       }

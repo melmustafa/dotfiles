@@ -645,7 +645,7 @@ require('lazy').setup({
 
         tailwindcss = {},
 
-        volar = {
+        vue_ls = {
           init_options = {
             vue = {
               hybridMode = false,
@@ -744,10 +744,9 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'clang-format',
         'goimports',
-        'golines',
         'goimports-reviser',
+        'golines',
         'prettier',
-        'codespell',
         'checkmake',
         'vale',
         'hadolint',
@@ -755,6 +754,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_enable = true,
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
@@ -793,7 +793,10 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
+          return {
+            timeout_ms = 500,
+            lsp_format = 'never',
+          }
         else
           return {
             timeout_ms = 500,
