@@ -6,7 +6,6 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        makefile = { 'checkmake' },
         dockerfile = { 'hadolint' },
         markdown = { 'vale' },
         text = { 'vale' },

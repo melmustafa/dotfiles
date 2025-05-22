@@ -88,6 +88,7 @@ plugins=(
   colored-man-pages
   colorize
   command-not-found
+  docker
   extract
   fzf
   git

@@ -641,8 +641,6 @@ require('lazy').setup({
 
         yamlls = {},
 
-        rust_analyzer = {},
-
         tailwindcss = {},
 
         vue_ls = {
@@ -708,8 +706,6 @@ require('lazy').setup({
 
         hls = {},
 
-        texlab = {},
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -747,7 +743,6 @@ require('lazy').setup({
         'goimports-reviser',
         'golines',
         'prettier',
-        'checkmake',
         'vale',
         'hadolint',
       })
