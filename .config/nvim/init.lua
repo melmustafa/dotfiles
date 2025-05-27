@@ -579,6 +579,8 @@ require('lazy').setup({
       local servers = {
         clangd = {},
 
+        postgres_lsp = {},
+
         gopls = {
           settings = {
             gopls = {
@@ -739,12 +741,13 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clang-format',
-        'goimports',
+        'gofumpt',
         'goimports-reviser',
         'golines',
         'prettier',
         'vale',
         'hadolint',
+        'pgformatter',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -813,10 +816,12 @@ require('lazy').setup({
         markdown = { 'prettier' },
         yaml = { 'prettier' },
         python = { 'ruff_organize_imports', 'ruff_format' },
-        go = { 'golines', 'goimports-reviser' },
+        go = { 'golines', 'goimports-reviser', 'gofumpt' },
+        sql = { 'pg_format' },
       },
       formatters = {
         ['clang-format'] = { prepend_args = { '--fallback-style=google' } },
+        ['goimports-reviser'] = { prepend_args = { 'rm-unused' } },
         golines = { prepend_args = { '--max-len=80' } },
       },
     },
