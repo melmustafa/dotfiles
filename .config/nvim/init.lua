@@ -577,7 +577,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        -- clangd = {},
 
         postgres_lsp = {},
 
@@ -641,72 +641,72 @@ require('lazy').setup({
           },
         },
 
-        yamlls = {},
+        -- yamlls = {},
 
-        tailwindcss = {},
+        -- tailwindcss = {},
 
-        vue_ls = {
-          init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-          settings = {
-            typescript = {
-              inlayHints = {
-                enumMemberValues = {
-                  enabled = true,
-                },
-                functionLikeReturnTypes = {
-                  enabled = true,
-                },
-                propertyDeclarationTypes = {
-                  enabled = true,
-                },
-                parameterTypes = {
-                  enabled = true,
-                  suppressWhenArgumentMatchesName = true,
-                },
-                variableTypes = {
-                  enabled = true,
-                },
-              },
-            },
-          },
-        },
-        ts_ls = {
-          init_options = {
-            plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
-                languages = { 'vue' },
-              },
-            },
-          },
-          settings = {
-            typescript = {
-              tsserver = {
-                useSyntaxServer = false,
-              },
-              inlayHints = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          },
-        },
-        eslint = {},
+        -- vue_ls = {
+        --   init_options = {
+        --     vue = {
+        --       hybridMode = false,
+        --     },
+        --   },
+        --   settings = {
+        --     typescript = {
+        --       inlayHints = {
+        --         enumMemberValues = {
+        --           enabled = true,
+        --         },
+        --         functionLikeReturnTypes = {
+        --           enabled = true,
+        --         },
+        --         propertyDeclarationTypes = {
+        --           enabled = true,
+        --         },
+        --         parameterTypes = {
+        --           enabled = true,
+        --           suppressWhenArgumentMatchesName = true,
+        --         },
+        --         variableTypes = {
+        --           enabled = true,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
+        -- ts_ls = {
+        --   init_options = {
+        --     plugins = {
+        --       {
+        --         name = '@vue/typescript-plugin',
+        --         location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+        --         languages = { 'vue' },
+        --       },
+        --     },
+        --   },
+        --   settings = {
+        --     typescript = {
+        --       tsserver = {
+        --         useSyntaxServer = false,
+        --       },
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = 'all',
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --         includeInlayFunctionParameterTypeHints = true,
+        --         includeInlayVariableTypeHints = true,
+        --         includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        --         includeInlayPropertyDeclarationTypeHints = true,
+        --         includeInlayFunctionLikeReturnTypeHints = true,
+        --         includeInlayEnumMemberValueHints = true,
+        --       },
+        --     },
+        --   },
+        -- },
+        -- eslint = {},
 
-        dockerls = {},
+        -- dockerls = {},
 
-        hls = {},
+        -- hls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -740,13 +740,13 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'clang-format',
+        -- 'clang-format',
         'gofumpt',
         'goimports-reviser',
         'golines',
         'prettier',
         'vale',
-        'hadolint',
+        -- 'hadolint',
         'pgformatter',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -804,8 +804,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        c = { 'clang-format' },
-        cpp = { 'clang-format' },
+        -- c = { 'clang-format' },
+        -- cpp = { 'clang-format' },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
         json = { 'prettier' },
