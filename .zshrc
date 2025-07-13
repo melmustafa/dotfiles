@@ -88,25 +88,10 @@ plugins=(
   colored-man-pages
   colorize
   command-not-found
-  docker
-  extract
   fzf
-  git
   gitignore
-  golang
   history-substring-search
-  mongocli
-  node
-  npm
-  nvm
-  yarn
-  pyenv
-  python
   thefuck
-  tmux
-  ubuntu
-  volta
-  vscode
   web-search
   you-should-use
   z
