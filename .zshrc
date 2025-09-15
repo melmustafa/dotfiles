@@ -91,7 +91,6 @@ plugins=(
   fzf
   gitignore
   history-substring-search
-  thefuck
   web-search
   you-should-use
   z
