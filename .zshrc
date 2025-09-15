@@ -134,3 +134,6 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export COREPACK_ENABLE_AUTO_PIN=0
+
+# uv shell completion
+eval "$(uv generate-shell-completion zsh)"
